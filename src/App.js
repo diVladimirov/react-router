@@ -1,11 +1,23 @@
-import "./App.css";
+import React from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import FilmView from './pages/FilmView';
+import FilmDetails from './pages/FilmDetails';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <h1>hi</h1>
-    </div>
+    <>
+      <Switch>
+        <Route path="/films" exact>
+          <FilmView />
+        </Route>
+
+        <Route path="/films/:filmid">
+          <FilmDetails />
+        </Route>
+        <Redirect from="/" to="/films" />
+      </Switch>
+    </>
   );
-}
+};
 
 export default App;
